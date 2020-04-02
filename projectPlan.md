@@ -23,6 +23,8 @@ I can login and submit my response to the specific question with the option to r
         - We need all script and style tags
         - Navbar
                 href= "/" anchor tag 
+                href= "/about" anchor tag
+                href= "/newAccount" anchor tag
             if logged out
                 href= "/login" anchor tag
             if logged in
@@ -74,21 +76,32 @@ I can login and submit my response to the specific question with the option to r
 
 # Routes
 
-    "/" (render home page)
-    "/login" (launches Auth0)
-    "/loggout" (logs user out and redirects to "/")
-    "/user" (render user view)
-    "/admin" (render admin view)
+    "/" (render home page) 
+    "/login" (launches Auth0) Done
+    "/loggout" (logs user out and redirects to "/") Done
+    "/user" (render user view) Done
+    "/admin" (render admin view) 
     "/error" (render error view)
     "/failure" (render failure view)
+
     "/newCompany" (creates new row for company and renders /login)
+        -logic to check if the company exists already
+        -if company can be created
+            -new company created in company table.
+            -owners name to the user table (owner = true)
+        -redirect(/login)
+
     "/api/posts" (gets all posts from db and renders /admin)
-    "/api/posts/:user" (gets all personal posts from db and renders /user)
     "/api/posts/:employee" (gets all employee posts from db and renders /admin)
-    /api/posts/:category (gets all category post from db and renders /admin)
+    "/api/posts/:category" (gets all category post from db and renders /admin)
+    "/api/newUser" (creates a new user and renders /admin)
+
+    "/api/posts/:user" (gets all personal posts from db and renders /user)
+    
     "/api/newMessage" (creates a new message for that user)
     "/api/adminMessage" (gets all admin messages and renders /user)
-    "/api/newUser" (creates a new user and renders /admin)
+    
+    
 
 
 # Database
@@ -111,9 +124,21 @@ I can login and submit my response to the specific question with the option to r
             user_id: FORIEGN KEY,
             category: VARCHAR,
             subject: VARCHAR,
-            content: VARCHAR
+            content: VARCHAR,
+            private: BOOLEAN
 
-        
+        - Questions
+            id: 
+            question:
+            is_active: BOOLEAN
+
+        - Answers
+            id: VARCHAR,
+            user_id: FORIEGN KEY,
+            question_id: 
+            value: VARCHAR 
+
+
 
     
 
