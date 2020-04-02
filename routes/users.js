@@ -11,4 +11,6 @@ router.get('/user', secured(), function (req, res, next) {
   });
 });
 
+
+
 module.exports = router;
