@@ -11,13 +11,10 @@ const userInViews = require("./lib/middleware/userInViews");
 const authRouter = require("./routes/auth");
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
+const adminRouter = require("./routes/admin_routes");
 const exphbs = require("express-handlebars");
 
 const app = express();
-
-// const routes = require("");
-
-// app.use(routes);
 
 const db = require("./models");
 
@@ -113,6 +110,7 @@ app.use(userInViews());
 app.use("/", authRouter);
 app.use("/", indexRouter);
 app.use("/", usersRouter);
+app.use("/", adminRouter);
 
 // Catch 404 and forward to error handler
 app.use(function (req, res, next) {
