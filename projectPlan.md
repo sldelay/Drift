@@ -92,19 +92,21 @@ I can login and submit my response to the specific question with the option to r
         -redirect(/login)
 
     "/api/posts" (gets all posts from db and renders /admin)
-    "/api/posts/:employee" (gets all employee posts from db and renders /admin)
+    "/api/adminPosts/:user" (gets one employees posts from db and renders /admin)
     "/api/posts/:category" (gets all category post from db and renders /admin)
     "/api/newUser" (creates a new user and renders /admin)
+    "/api/newQuestion" (creates a new question and renders /admin)
+    "/api/getAnswers" (gets all answers from db and renders /admin)
 
-    "/api/posts/:user" (gets all personal posts from db and renders /user)
-    
+    "/api/answers/:user (creates answers from employee)
+    "/api/posts/:user" (gets all personal posts from db and renders /user) 
     "/api/newMessage" (creates a new message for that user)
-    "/api/adminMessage" (gets all admin messages and renders /user)
+    "/api/getQuestions" (gets all admin messages and renders /user)
     
     
 
 
-# Database
+# Database 
 
     - Models
         - Companies
@@ -115,7 +117,6 @@ I can login and submit my response to the specific question with the option to r
             id: VARCHAR,
             company_id: FORIEGN KEY, 
             name: VARCHAR,
-            posts: VARCHAR,
             owner: BOOLEAN,
             admin: BOOLEAN
 

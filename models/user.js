@@ -7,21 +7,41 @@ module.exports = function (sequelize, DataTypes) {
         len: [1],
       },
     },
-    post: {
-      type: DataTypes.TEXT,
+    email: {
+      type: DataTypes.STRING,
       allowNull: false,
-      len: [1],
+      validate: {
+        len: [1],
+      },
+    },
+    owner: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    admin: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
   });
 
   User.associate = function (models) {
-    // We're saying that a User will have many posts
-    User.hasMany(models.Post, {
+    User.belongsTo(models.Company, {
       foreignKey: {
         allowNull: false,
       },
     });
   };
 
+  User.associate = function (models) {
+    User.hasMany(models.Post, {
+      onDelete: "RESTRICT",
+    });
+  };
+
+  User.associate = function (models) {
+    User.hasMany(models.Answer, {
+      onDelete: "RESTRICT",
+    });
+  };
   return User;
 };

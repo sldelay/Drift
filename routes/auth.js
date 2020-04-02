@@ -15,7 +15,7 @@ router.get(
     scope: "openid email profile",
   }),
   function (req, res) {
-    res.redirect("/");
+    res.redirect("/callback");
   }
 );
 
@@ -28,6 +28,7 @@ router.get("/callback", function (req, res, next) {
     if (!user) {
       return res.redirect("/login");
     }
+    console.log(user._json.email);
     req.logIn(user, function (err) {
       if (err) {
         return next(err);

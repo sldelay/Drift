@@ -1,28 +1,38 @@
 module.exports = function (sequelize, DataTypes) {
   let Post = sequelize.define("Post", {
-    title: {
+    subject: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1],
       },
     },
-    body: {
-      type: DataTypes.TEXT,
+    category: {
+      type: DataTypes.STRING,
       allowNull: false,
-      len: [1],
+      validate: {
+        len: [1],
+      },
+    },
+    content: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1],
+      },
+    },
+    private: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
   });
 
   Post.associate = function (models) {
-    // We're saying that a Post should belong to an User
-    // A Post can't be created without an Author due to the foreign key constraint
     Post.belongsTo(models.User, {
       foreignKey: {
         allowNull: false,
       },
     });
   };
-
   return Post;
 };
