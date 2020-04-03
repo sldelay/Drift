@@ -13,23 +13,31 @@ module.exports = function () {
     db.Post.findAll({
       where: query,
       include: [db.User],
-    }).then(function (dbPost) {
-      res.json(dbPost);
+    }).then(function (post) {
+      res.render("user", {
+        post,
+      });
     });
   });
+
   // Route for employees to send feedback to specified admin
   router.post("/api/newMessage", function (req, res) {
-    db.User.create(req.body).then(function (dbUser) {
-      res.json(dbUser);
+    db.User.create(req.body).then(function (post) {
+      res.render("user", {
+        post,
+      });
     });
   });
+
   router.post("/api/posts/:user", function (req, res) {
     db.Drift_DB.findAll({
       where: {
         id: req.params.id,
       },
-    }).then(function (dbUser) {
-      res.json(dbUser);
+    }).then(function (post) {
+      res.render("user", {
+        post,
+      });
     });
   });
 };
