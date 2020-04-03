@@ -39,5 +39,6 @@ module.exports = function () {
         post,
       });
     });
-  });
-};
+
+
+module.exports = router;
