@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS `drift_db`;
+
+CREATE DATABASE `drift_db`;
