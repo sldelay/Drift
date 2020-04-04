@@ -26,7 +26,11 @@ dotenv.config();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-db.sequelize.sync({ force: true }).then(function () {
+const sqSync = {
+  force: false,
+};
+
+db.sequelize.sync(sqSync).then(function () {
   app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
   });
