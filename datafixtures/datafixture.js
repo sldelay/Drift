@@ -6,9 +6,9 @@ let questArr = [
 ];
 
 let seedQuestions = function () {
-  questArr.forEach((ele) => {
+  for (const ele of questArr) {
     questControl.createQuestion(ele);
-  });
+  }
 };
 
 module.exports = function () {
