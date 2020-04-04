@@ -3,21 +3,50 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
-    <title>Drift</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./public/assets/css/style.css" type="text/css" />
+
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="/assets/js/script.js"></script>
+
+    <title>Drift</title>
 </head>
 
 <body>
-    <nav>
-        <div class="nav-wrapper">
-            <a href="/login" class="brand-logo center">Login</a>
-        </div>
-    </nav>
     <div class="container">
-        {{{ body }}}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#"><span class="mb-0 h2">DRIFT</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/instructions"><span class="mb-1 h5">Instructions</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about"><span class="mb-1 h5">About Us</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact"><span class="mb-1 h5">Contact Us</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#"><span class="mb-1 h5">LOGIN</span><span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container">
+            {{{ body }}}
+        </div>
     </div>
 </body>
 
