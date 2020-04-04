@@ -3,6 +3,7 @@ const router = express.Router();
 
 let db = require("../models");
 
+// Route for getting all personal posts
 router.get("/api/posts/:user", function (req, res) {
   let query = {};
   if (req.query.user_id) {
@@ -25,6 +26,7 @@ router.post("/api/newMessage", function (req, res) {
 });
 
 router.get("/api/answers/:user", function (req, res) {
+
   db.Drift_DB.findAll({
     where: {
       id: req.params.id,
@@ -51,5 +53,6 @@ router.get("/api/getQuestions", function (req, res) {
     });
   });
 });
+
 
 module.exports = router;
