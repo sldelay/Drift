@@ -19,16 +19,14 @@ router.get("/api/posts/:user", function (req, res) {
   });
 });
 
-// Route for employees to send feedback to specified admin
 router.post("/api/newMessage", function (req, res) {
   db.User.create(req.body).then(function (post) {
-    res.render("user", {
-      post,
-    });
+    res.json(post);
   });
 });
 
-router.post("/api/posts/:user", function (req, res) {
+router.get("/api/answers/:user", function (req, res) {
+
   db.Drift_DB.findAll({
     where: {
       id: req.params.id,
@@ -39,5 +37,22 @@ router.post("/api/posts/:user", function (req, res) {
     });
   });
 });
+
+router.post("/api/answers/:user", function (req, res) {
+  db.Answer.create({
+    answer: req.body.answer,
+  }).then(function (data) {
+    res.json(data);
+  });
+});
+
+router.get("/api/getQuestions", function (req, res) {
+  db.Question.findAll({}).then(function (question) {
+    res.render("user", {
+      question,
+    });
+  });
+});
+
 
 module.exports = router;
