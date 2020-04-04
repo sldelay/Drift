@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./assets/css/style.css" type="text/css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="/assets/js/script.js"></script>
+
+    <title>Drift</title>
+</head>
+
+<body>
+    <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+                <a class="navbar-brand" href="#"><span class="mb-0 h2">DRIFT</span></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/instructions"><span class="mb-1 h5">Instructions</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about"><span class="mb-1 h5">About Us</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contact"><span class="mb-1 h5">Contact Us</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#"><span class="mb-1 h5">LOGIN</span><span
+                                    class="sr-only">(current)</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+        <div class="jumbotron header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="../public/assets/images/driftlogo.jpg" class="img-thumbnail float-left"
+                            alt="Drift Logo">
+                    </div>
+                    <div class="col-md-8">
+                        <h1 class="display-2">DRIFT</h1>
+                        <p class="h2">Prevent Employee turnover - Catch the Drift!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container m-2">
+                <div class= "row">
+                    <h1></h1><br>
+                </div>
+                <form>
+                    <h3>Fill out this form to start a new account for your company:</h3>
+                    <div class="form-group">
+                        <label for="companyName">Company Name</label>
+                        <input type="companyName" class="form-control" id="companyNameform">
+                    </div>
+                    <div class="form-group">
+                        <label for="ownerName">Owner Name</label>
+                        <input type="ownerName" class="form-control" id="ownerNameform">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="ownerEmail" aria-describedby="emailHelp">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email.</small>
+                    </div>
+
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Company Info Complete</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
