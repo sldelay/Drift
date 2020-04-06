@@ -7,5 +7,5 @@ const sqSync = {
 
 console.log(process.env.DB_PASSWORD);
 db.sequelize.sync(sqSync).then(function () {
-  require("./datafixtures/datafixture")();
+  require("./datafixtures/datafixture.js")();
 });
