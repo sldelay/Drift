@@ -12,6 +12,7 @@ module.exports = {
       name: data.name,
       email: data.email,
       admin: data.admin,
+      CompanyId: data.compId,
     });
   },
   createCompany: (data) => {
