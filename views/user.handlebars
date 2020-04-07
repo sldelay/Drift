@@ -1,42 +1,44 @@
-<div class="jumbotron header">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <img src="../public/assets/images/driftlogo.jpg" class="img-thumbnail float-left" alt="Drift Logo">
-      </div>
-      <div class="col-md-8">
-        <h1 class="display-2">Employee Voice</h1>
-        <p class="h2">Prevent Employee Turnover - Catch the Drift!</p>
-      </div>
+<div class="container user">
+  <div class="row">
+    <div class="col-sm-4 sideNav">
+      <button type="button" class="btn btn-primary profile">My Profile</button>
+      <br>
+      <button type="button" class="btn btn-primary profile">My Feedback</button>
+      <br>
+      <button type="button" class="btn btn-primary profile">Questions</button>
+    </div>
+    <div class="col-sm-8 display">
+      {{#if profile}}
+      <h1>Profile</h1>
+      <p>{{profile.id}}</p>
+      <p>{{profile.name}}</p>
+      <p>{{profile.email}}</p>
+      {{/if}}
+      {{#if post}}
+      <h1>Post</h1>
+      {{/if}}
+      {{#if questions}}
+      <h1>Questions</h1>
+      {{/if}}
     </div>
   </div>
 </div>
-<div class="container">
-  <div class="row">
-    <div class="col-sm-3">
-      <div class="grey-bg navlnk">
-
-        <script id="text-template" type="text/x-handlebars-template">
-                    <div id="linkcontent">
-                        <ul>
-                            <li>{{link link1}}</li>
-                            <li>{{link link2}}</li>
-                            <li>{{link link3}}</li>
-                            <li>{{link link4}}</li>
-                            <li>{{link link5}}</li>
-                            <li>{{link link6}}</li>
-                            <li>{{link link7}}</li>
-                            <li>{{link link8}}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-9">
-            <div class="grey-bg admincont">
-                <p>We recognize that you are the backbone of our company.  Our success is tied to your job satisfaction.</p>
-                <p>Each week we will be asking you what we are doing right and where we could improve.  We are in this together.  Please let us know how we are doing.</p>
-            </div>
-
-            {{ questionblock questions }}
-        </div>
+<div class="container user">
+  <div>
+    <form>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Subject</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Category</label>
+        <input type="password" class="form-control" id="exampleInputPassword1">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Message</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>

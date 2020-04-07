@@ -33,9 +33,9 @@ router.get("/callback", function (req, res, next) {
       if (err) {
         return next(err);
       }
-      const returnTo = req.session.returnTo;
-      delete req.session.returnTo;
-      res.redirect(returnTo || "/user");
+      // const returnTo = req.session.returnTo;
+      // delete req.session.returnTo;
+      res.redirect("/findUser");
     });
   })(req, res, next);
 });
