@@ -15,5 +15,11 @@ $(document).ready(function () {
     const formArray = $(event.currentTarget).serializeArray();
     const formData = arrayToObject(formArray);
     console.log(formData);
+    let owner = formData.ownerName;
+    console.log("The owner variable is = " + owner);
+    let company = formData.companyName;
+    console.log("The company variable is = " + company);
+    let email = formData.ownerEmail;
+    console.log("The owner email variable is = " + email);
   });
 });
