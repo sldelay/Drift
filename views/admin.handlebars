@@ -1,72 +1,11 @@
-<div class="jumbotron header">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <img src="../public/assets/images/driftlogo.jpg" class="img-thumbnail float-left" alt="Drift Logo">
-            </div>
-            <div class="col-md-8">
-                <h1 class="display-2">Management</h1>
-                <p class="h2">Prevent Employee turnover - Catch the Drift!</p>
-            </div>
-        </div>
-    </div>
-</div>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-3">
-                <div class="grey-bg navlnk">
-        
-<script id="text-template" type="text/x-handlebars-template">
-                    <div id="linkcontent">
-                        <ul>
-                            <li>{{link link1}}</li>
-                            <li>{{link link2}}</li>
-                            <li>{{link link3}}</li>
-                            <li>{{link link4}}</li>
-                            <li>{{link link5}}</li>
-                            <li>{{link link6}}</li>
-                            <li>{{link link7}}</li>
-                            <li>{{link link8}}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-9">
-            <div class="grey-bg admincont">
-                <p>Questions we ask our employees are far more important and relevant to business continuity than questions we ask our customers.</p>
-                <p>Asking our employees - the faces of our business - what drives them, what makes them thrive and where their passions lie can help us help them become happier employees.  Happy employees radiate a happy business and a place where customers want to stop by.</p>
-            </div>
+{{#if profile}}
+{{> profile-block }}
+{{/if}}
 
-            {{ questionblock questions }}
-        </div>
-  {{!-- <div class="row">
-        <div class="col-md-12">
-            <div class="grey-bg admin-question">
-                <div id="form-container" class="container"></div>
+{{#if post}}
+{{> post-block }}
+{{/if}}
 
-                <script type="text/html" id="form-template">
-
-
-                    {{#form url id="example-form"}}
-                            
-                            <div>
-                            {{label_validation 'question' 'Post Question' errors class="control-label"}}<br>
-                                {{textarea_validation 'question' person.question}}
-                                {{field_errors 'question' errors class="help-block text-error"}}
-                            </div>
-                        <div class="form-group">
-                            <div class="btn">
-                                {{submit 'save' 'Post Now' class="btn btn-primary"}}
-                            </div>
-                        </div>
-                    {{/form}}
-                </script> 
-    
-    
-    
-                </div>
-            </div>
-        </div> --}}
-    </div>
-</div>
+{{#if answers}}
+{{> answer-block }}
+{{/if}}

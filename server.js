@@ -14,6 +14,7 @@ const usersRouter = require("./routes/users");
 const adminRouter = require("./routes/admin_routes");
 const employeeRouter = require("./routes/user_routes");
 const viewRouter = require("./routes/view_routes");
+const companyRouter = require("./routes/company_routes");
 const exphbs = require("express-handlebars");
 
 const app = express();
@@ -28,7 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const sqSync = {
-  force: false,
+  force: true,
 };
 
 db.sequelize.sync(sqSync).then(function () {
@@ -119,6 +120,7 @@ app.use("/", usersRouter);
 app.use("/", adminRouter);
 app.use("/", employeeRouter);
 app.use("/", viewRouter);
+app.use("/", companyRouter);
 
 // Catch 404 and forward to error handler
 app.use(function (req, res, next) {
