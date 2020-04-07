@@ -6,3 +6,21 @@ body {
     -o-background-size: cover;
     flex: content;
   }
+
+.container .user {
+  background-color: white;
+  padding: 2em;
+  margin-top: 1.5em;
+}
+
+.sideNav {
+  min-height: 40em;
+}
+
+.display {
+  min-height: 40em;
+}
+
+button {
+  margin-bottom: 2em;
+}

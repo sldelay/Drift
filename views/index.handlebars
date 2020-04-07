@@ -1,42 +1,39 @@
-        <div class="jumbotron header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <img src="../public/assets/images/driftlogo.jpg" class="img-thumbnail float-left"
-                            alt="Drift Logo">
-                    </div>
-                    <div class="col-md-8">
-                        <h1 class="display-2">DRIFT</h1>
-                        <p class="h2">Prevent Employee turnover - Catch the Drift!</p>
-                    </div>
-                </div>
+<div class="jumbotron header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <img src="./assets/images/driftlogo.jpg" class="img-thumbnail float-left" alt="Drift Logo">
             </div>
-
-            <div class="container m-2">
-                <div class= "row">
-                    <h1></h1><br>
-                </div>
-                <form>
-                    <h3>Fill out this form to start a new account for your company:</h3>
-                    <div class="form-group">
-                        <label for="companyName">Company Name</label>
-                        <input type="companyName" class="form-control" id="companyNameform">
-                    </div>
-                    <div class="form-group">
-                        <label for="ownerName">Owner Name</label>
-                        <input type="ownerName" class="form-control" id="ownerNameform">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="ownerEmail" aria-describedby="emailHelp">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email.</small>
-                    </div>
-
-                    <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Company Info Complete</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+            <div class="col-md-8">
+                <h1 class="display-2">DRIFT</h1>
+                <p class="h2">Prevent Employee turnover - Catch the Drift!</p>
             </div>
         </div>
+    </div>
+
+    <div class="container m-2">
+        <div class="row">
+            <h1></h1><br>
+        </div>
+        <form id="newCompany">
+            <h3>Fill out this form to start a new account for your company:</h3>
+            <div class="form-group">
+                <label for="companyName">Company Name</label>
+                <input name="companyName" type="text" class="form-control" id="companyNameform">
+            </div>
+            <div class="form-group">
+                <label for="ownerName">Owner Name</label>
+                <input name="ownerName" type="text" class="form-control" id="ownerNameform">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input name="ownerEmail" type="text" class="form-control" id="ownerEmailform"
+                    aria-describedby="emailHelp">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email.</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="./assets/js/landing.js"></script>

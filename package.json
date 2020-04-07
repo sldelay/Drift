@@ -8,7 +8,8 @@
     "start": "node server.js",
     "lint": "eslint --max-warnings 0 .",
     "fix": "eslint --fix .",
-    "watch": "nodemon server.js"
+    "watch": "nodemon server.js",
+    "seed": "node seeddb.js"
   },
   "repository": {
     "type": "git",

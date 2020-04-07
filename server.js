@@ -13,7 +13,7 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const adminRouter = require("./routes/admin_routes");
 const employeeRouter = require("./routes/user_routes");
-const htmlRouter = require("./routes/html_routes");
+const viewRouter = require("./routes/view_routes");
 const exphbs = require("express-handlebars");
 
 const app = express();
@@ -27,7 +27,11 @@ dotenv.config();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-db.sequelize.sync({ force: true }).then(function () {
+const sqSync = {
+  force: false,
+};
+
+db.sequelize.sync(sqSync).then(function () {
   app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
   });
@@ -114,7 +118,7 @@ app.use("/", indexRouter);
 app.use("/", usersRouter);
 app.use("/", adminRouter);
 app.use("/", employeeRouter);
-app.use("/", htmlRouter);
+app.use("/", viewRouter);
 
 // Catch 404 and forward to error handler
 app.use(function (req, res, next) {
