@@ -4,15 +4,15 @@
       {{#unless answer.admin}}
       <button type="button" class="btn btn-primary profile" data-id="{{answer.id}}">My Profile</button>
       <br>
-      <button type="button" class="btn btn-primary profile" data-id="{{answer.id}}">My Feedback</button>
+      <button type="button" class="btn btn-primary feedback" data-id="{{answer.id}}">My Feedback</button>
       <br>
-      <button type="button" class="btn btn-primary profile" data-id="{{answer.id}}">Questions</button>
+      <button type="button" class="btn btn-primary questions" data-id="{{answer.id}}">Questions</button>
       {{else}}
       <button type="button" class="btn btn-primary profile" data-id="{{answer.id}}">My Profile</button>
       <br>
-      <button type="button" class="btn btn-primary profile">Employee Feedback</button>
+      <button type="button" class="btn btn-primary getFeedback">Employee Feedback</button>
       <br>
-      <button type="button" class="btn btn-primary profile">Employee Answers</button>
+      <button type="button" class="btn btn-primary getAnswers">Employee Answers</button>
       {{/unless}}
     </div>
     <div class="col-sm-8 display">
