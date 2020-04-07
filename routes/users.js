@@ -2,13 +2,31 @@ const express = require('express');
 const secured = require('../lib/middleware/secured');
 const router = express.Router();
 
+const db = require("../models");
+
 /* GET user profile. */
-router.get('/user', secured(), function (req, res, next) {
+router.get('/findUser', secured(), function (req, res, next) {
   const { _raw, _json, ...userProfile } = req.user;
-  res.render('user', {
-    userProfile: JSON.stringify(userProfile, null, 2),
-    title: 'Profile page'
-  });
+  console.log(req.user._json.email);
+  db.User.findOne({
+    where: {
+      email: req.user._json.email,
+    },
+    raw: true,
+    attributes: ["id", "name", "email", "admin"]
+  }).then(function (profile) {
+    console.log(profile.admin)
+    if (profile.admin === 0) {
+      console.log(profile.email)
+      res.render('user', {
+        profile
+      });
+    } else {
+      res.render('admin', {
+        profile
+      });
+    }
+  })
 });
 
 
