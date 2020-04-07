@@ -12,13 +12,22 @@ router.get("/api/companies", function (req, res) {
 });
 
 router.post("/api/newCompany", function (req, res) {
-  db.User.findOrCreate({
+  db.Company.findOrCreate({
     where: {
       name: req.body.name,
     },
-  }).then(function (post) {
-    res.render("company", {
-      post,
+  }).then(function () {
+    db.User.findOrCreate({
+      where: {
+        name: req.body.ownerName,
+        email: req.body.email,
+        admin: true,
+        owner: true,
+      },
+    }).then(function (data) {
+      res.json(data);
     });
   });
 });
+
+module.exports = router;

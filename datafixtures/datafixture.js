@@ -57,7 +57,7 @@ let userArr = [
   {
     name: "Sam Delay",
     email: "samuel.delay@gmail.com",
-    admin: false,
+    admin: true,
     compId: 1,
   },
   {

@@ -21,6 +21,6 @@ body {
   min-height: 40em;
 }
 
-button {
+button.btn {
   margin-bottom: 2em;
 }
