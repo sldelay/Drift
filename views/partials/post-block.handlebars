@@ -2,13 +2,13 @@
   <div class="row">
     <div class="col-sm-4 sideNav">
       {{#unless post.admin}}
-      <button type="button" class="btn btn-primary profile">My Profile</button>
+      <button type="button" class="btn btn-primary profile" data-id="{{post.id}}">My Profile</button>
       <br>
-      <button type="button" class="btn btn-primary profile">My Feedback</button>
+      <button type="button" class="btn btn-primary profile" data-id="{{post.id}}">My Feedback</button>
       <br>
-      <button type="button" class="btn btn-primary profile">Questions</button>
+      <button type="button" class="btn btn-primary profile" data-id="{{post.id}}">Questions</button>
       {{else}}
-      <button type="button" class="btn btn-primary profile">My Profile</button>
+      <button type="button" class="btn btn-primary profile" data-id="{{post.id}}">My Profile</button>
       <br>
       <button type="button" class="btn btn-primary profile">Employee Feedback</button>
       <br>
@@ -24,7 +24,7 @@
 <div class="container user">
   {{#unless post.admin}}
   <div>
-    <form class="newMessage">
+    <form class="newMessage" data-id="{{post.id}}">
       <div class="form-group">
         <label for="formSubject">Subject</label>
         <input type="email" class="form-control" id="formSubject" aria-describedby="emailHelp">
