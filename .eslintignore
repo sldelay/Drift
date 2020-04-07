@@ -2,3 +2,4 @@ models/index.js
 node_modules
 routes/auth.js
 routes/users.js
+package-lock.json
