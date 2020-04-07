@@ -4,6 +4,7 @@ const router = express.Router();
 let db = require("../models");
 
 // Route for getting all personal posts
+
 router.get("/api/posts/:user", function (req, res) {
   let query = {};
   if (req.query.user_id) {
