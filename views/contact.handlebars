@@ -1,18 +1,49 @@
 <div class="jumbotron header">
     <div class="container">
         <div class="row">
-              <div class="col-md-2">
+            <div class="col-md-2">
                 <img src="./assets/images/driftlogo.jpg" class="img-thumbnail float-left" alt="Drift Logo">
             </div>
             <div class="col-md-10">
-                <h3 class = "text-center">DRIFT - <em>Prevent Employee turnover - Catch the Drift!</em></h1>
-                <h1 class = "text-center">---</h1>
-                <p class="h1 text-center">Contact Us</p>
+                <h3 class="text-center">DRIFT - <em>Prevent Employee turnover - Catch the Drift!</em></h1>
+                    <h1 class="text-center">---</h1>
+                    <p class="h1 text-center">Contact Us</p>
             </div>
         </div>
     </div>
 
+
     <div class="container m-2">
-        <p>(here is where we will write the contact info)</p>
+        <div class="row">
+            <h1></h1><br>
+        </div>
+        <form id="newContact">
+            <div class="form-group">
+                <label for="contactName">Your Name</label>
+                <input name="contactName" type="text" class="form-control" id="contactNameform">
+            </div>
+            <div class="form-group">
+                <label for="companyName">Your Company</label>
+                <input name="companyName" type="text" class="form-control" id="companyNameform">
+            </div>
+            <div class="form-group">
+                <label for="companyType">Your Company's Main Business Type</label>
+                <input name="companyType" type="text" class="form-control" id="companyNameform">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Contact Email address</label>
+                <input name="contactEmail" type="text" class="form-control" id="contactEmailform"
+                    aria-describedby="emailHelp">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email.</small>
+            </div>
+            <div class="form-group">
+                <label for="howHelp">How can we help you?</label>
+                <input name="howHelp" type="text" class="form-control" id="companyNameform">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="./assets/js/contactus.js"></script>
 </div>
