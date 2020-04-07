@@ -13,11 +13,9 @@ router.get('/findUser', secured(), function (req, res, next) {
       email: req.user._json.email,
     },
     raw: true,
-    attributes: ["id", "name", "email", "admin"]
   }).then(function (profile) {
-    console.log(profile.admin)
+    console.log(profile)
     if (profile.admin === 0) {
-      console.log(profile.email)
       res.render('user', {
         profile
       });

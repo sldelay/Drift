@@ -1,44 +1,11 @@
-<div class="container user">
-  <div class="row">
-    <div class="col-sm-4 sideNav">
-      <a href="#" type="button" class="btn btn-primary profile">My Profile</a>
-      <br>
-      <a href="#" type="button" class="btn btn-primary profile">My Feedback</a>
-      <br>
-      <a href="#" type="button" class="btn btn-primary profile">Questions</a>
-    </div>
-    <div class="col-sm-8 display">
-      {{#if profile}}
-      <h1>Profile</h1>
-      <p>{{profile.id}}</p>
-      <p>{{profile.name}}</p>
-      <p>{{profile.email}}</p>
-      {{/if}}
-      {{#if post}}
-      <h1>Post</h1>
-      {{/if}}
-      {{#if questions}}
-      {{!-- partial for questions --}}
-      {{/if}}
-    </div>
-  </div>
-</div>
-<div class="container user">
-  <div>
-    <form>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Subject</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Category</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlTextarea1">Message</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-  </div>
-</div>
+{{#if profile}}
+{{> profile }}
+{{/if}}
+
+{{#if post}}
+
+{{/if}}
+
+{{#if questions}}
+{{!-- partial for questions --}}
+{{/if}}
