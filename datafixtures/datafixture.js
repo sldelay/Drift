@@ -54,7 +54,12 @@ let postArr = [
 
 let userArr = [
   { name: "Bob Williams", email: "bob@gmail.com", admin: true, compId: 2 },
-  { name: "Sam Delay", email: "sam@gmail.com", admin: false, compId: 1 },
+  {
+    name: "Sam Delay",
+    email: "samuel.delay@gmail.com",
+    admin: false,
+    compId: 1,
+  },
   {
     name: "Alyssa Williams",
     email: "alyssa@gmail.com",
