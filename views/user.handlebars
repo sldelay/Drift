@@ -1,11 +1,11 @@
 <div class="container user">
   <div class="row">
     <div class="col-sm-4 sideNav">
-      <button type="button" class="btn btn-primary profile">My Profile</button>
+      <a href="#" type="button" class="btn btn-primary profile">My Profile</a>
       <br>
-      <button type="button" class="btn btn-primary profile">My Feedback</button>
+      <a href="#" type="button" class="btn btn-primary profile">My Feedback</a>
       <br>
-      <button type="button" class="btn btn-primary profile">Questions</button>
+      <a href="#" type="button" class="btn btn-primary profile">Questions</a>
     </div>
     <div class="col-sm-8 display">
       {{#if profile}}
@@ -18,7 +18,7 @@
       <h1>Post</h1>
       {{/if}}
       {{#if questions}}
-      <h1>Questions</h1>
+      {{!-- partial for questions --}}
       {{/if}}
     </div>
   </div>
