@@ -29,7 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const sqSync = {
-  force: true,
+  force: false,
 };
 
 db.sequelize.sync(sqSync).then(function () {

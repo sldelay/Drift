@@ -15,15 +15,7 @@ router.get('/findUser', secured(), function (req, res, next) {
     raw: true,
   }).then(function (profile) {
     console.log(profile)
-    if (profile.admin === 0) {
-      res.render('user', {
-        profile
-      });
-    } else {
-      res.render('admin', {
-        profile
-      });
-    }
+    res.render("profile", profile)
   })
 });
 

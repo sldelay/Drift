@@ -11,10 +11,13 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/api/posts", function (req, res) {
-  db.Post.findAll({}).then(function (post) {
-    res.render("admin", {
-      post,
-    });
+  db.Post.findAll({
+    raw: true,
+    include: {
+      model: db.User,
+    },
+  }).then(function (post) {
+    res.render("postviewAdmin", { post });
   });
 });
 
@@ -46,15 +49,19 @@ router.get("/api/posts/:category", function (req, res) {
 });
 
 router.get("/api/getAnswers", function (req, res) {
-  db.Question.findAll({
-    where: {
-      isActive: true,
-    },
-    include: {
-      model: db.Answer,
-    },
+  db.Answer.findAll({
+    include: [
+      {
+        model: db.Question,
+        where: {
+          isActive: true,
+        },
+      },
+    ],
+    raw: true,
   }).then(function (answer) {
-    res.render("admin", {
+    console.log(answer);
+    res.render("answer", {
       answer,
     });
   });
@@ -76,6 +83,18 @@ router.post("/api/newUser", function (req, res) {
     admin: req.body.admin,
   }).then(function (data) {
     res.json(data);
+  });
+});
+
+router.get("/api/admin/:id", function (req, res) {
+  db.Question.findAll({
+    where: {
+      id: req.params.id,
+    },
+  }).then(function (profile) {
+    res.render("admin", {
+      profile,
+    });
   });
 });
 
