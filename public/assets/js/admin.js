@@ -29,3 +29,21 @@ $(document).on("submit", ".newQuestion", function (event) {
     window.location.href = "/admin";
   });
 });
+
+// $("#newQuestion").submit(function (event) {
+//   event.preventDefault();
+//   $.ajax({
+//     url: "/api/newQuestion",
+//     type: "post",
+//     data: {
+//       question: $("#formQuestion").val(),
+//       category: $("#formCategory").val(),
+//     },
+//   }).done(function (response) {
+//     // clear form
+//     $("#formQuestion").val("");
+//     $("#formCategory").val("");
+//     // attach to list
+//     alert("submitted");
+//   });
+// });

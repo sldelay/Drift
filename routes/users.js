@@ -7,10 +7,10 @@ const db = require("../models");
 /* GET user profile. */
 router.get('/findUser', secured(), function (req, res, next) {
   const { _raw, _json, ...userProfile } = req.user;
-  console.log(_json);
+  console.log(req.user._json.email);
   db.User.findOne({
     where: {
-      email: _json.email,
+      email: req.user._json.email,
     },
     raw: true,
   }).then(function (profile) {
