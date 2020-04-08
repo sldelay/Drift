@@ -70,7 +70,7 @@ router.get("/api/getAnswers", function (req, res) {
 router.post("/api/newQuestion", function (req, res) {
   db.Question.create({
     category: req.body.category,
-    question: req.body.category,
+    question: req.body.question,
   }).then(function (data) {
     res.json(data);
   });
