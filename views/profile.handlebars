@@ -7,12 +7,16 @@
       <a href="/findUserPost" type="button" class="btn btn-primary feedback" data-id="{{id}}">My Feedback</a>
       <br>
       <a href="/api/getQuestions" type="button" class="btn btn-primary questions" data-id="{{id}}">Questions</a>
+      <br>
+      <a href="/logout" type="button" class="btn btn-primary questions" data-id="{{id}}">Logout</a>
       {{else}}
       <a href="/findUser" type="button" class="btn btn-primary profile" data-id="{{id}}">My Profile</a>
       <br>
       <a href="/api/posts" type="button" class="btn btn-primary getFeedback">Employee Feedback</a>
       <br>
       <a href="/api/getAnswers" type="button" class="btn btn-primary getAnswers">Employee Answers</a>
+      <br>
+      <a href="/logout" type="button" class="btn btn-primary questions" data-id="{{id}}">Logout</a>
       {{/unless}}
     </div>
     <div class="col-sm-8 display">
