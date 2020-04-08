@@ -5,7 +5,7 @@ $(document).ready(function () {
     event.preventDefault();
     let postData = {
       subject: $("#formSubject").val().trim(),
-      category: $("#formCategory").val().trim(),
+      category: $("#formCategory").val(),
       content: $("#formMessage").val().trim(),
       userId: $("#newMessage").attr("data-id"),
     };
