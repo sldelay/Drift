@@ -33,6 +33,8 @@ const sqSync = {
 };
 
 db.sequelize.sync(sqSync).then(function () {
+  const startup = require("./startup");
+  startup();
   app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
   });
