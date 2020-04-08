@@ -23,14 +23,20 @@
 </div>
 <div class="container user">
   <div>
-    <form class="newMessage" data-id="{{profile.id}}">
+    <h3>New Message</h3>
+    <form id="newMessage" data-id="{{id}}">
       <div class="form-group">
         <label for="formSubject">Subject</label>
-        <input type="email" class="form-control" id="formSubject" aria-describedby="emailHelp">
+        <input class="form-control" id="formSubject" aria-describedby="emailHelp">
       </div>
       <div class="form-group">
         <label for="formCategory">Category</label>
-        <input type="password" class="form-control" id="formCategory">
+        <select class="form-control" name="category" id="formCategory">
+          <option value="management">management</option>
+          <option value="hours">hours</option>
+          <option value="coworkers">coworkers</option>
+          <option value="other">coworkers</option>
+        </select>
       </div>
       <div class="form-group">
         <label for="formMessage">Message</label>
