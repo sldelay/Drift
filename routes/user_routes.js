@@ -23,12 +23,11 @@ router.get("/api/myposts/:id", function (req, res) {
 
 router.post("/api/newMessage", function (req, res) {
   db.Post.create({
-    where: {
-      subject: req.body.subject,
-      category: req.body.category,
-      content: req.body.content,
-      private: false,
-    },
+    subject: req.body.subject,
+    category: req.body.category,
+    content: req.body.content,
+    UserId: req.body.userId,
+    private: false,
   }).then(function (data) {
     res.json(data);
   });
