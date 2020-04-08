@@ -33,14 +33,14 @@
 <div class="container user">
   {{#unless admin}}
   <div>
-    <form class="newMessage" data-id="{{profile.id}}">
+    <form id="newMessage" data-id="{{id}}">
       <div class="form-group">
         <label for="formSubject">Subject</label>
-        <input type="email" class="form-control" id="formSubject" aria-describedby="emailHelp">
+        <input class="form-control" id="formSubject" aria-describedby="emailHelp">
       </div>
       <div class="form-group">
         <label for="formCategory">Category</label>
-        <input type="password" class="form-control" id="formCategory">
+        <input class="form-control" id="formCategory">
       </div>
       <div class="form-group">
         <label for="formMessage">Message</label>
@@ -51,7 +51,7 @@
   </div>
   {{else}}
   <div>
-    <form class="newQuestion">
+    <form id="newQuestion">
       <div class="form-group">
         <label for="formCategory">Category</label>
         <select class="form-control" name="category" id="formCategory">
@@ -68,20 +68,20 @@
     </form>
   </div>
   <div>
-    <form class="newEmployee">
+    <form id="newEmployee">
       <div class="form-group">
         <label for="exampleInputEmail1">Name</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Email</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
+        <input class="form-control" id="exampleInputPassword1">
       </div>
       <div class="form-group">
         <label for="exampleFormControlSelect1">Admin Access</label>
         <select class="form-control" id="exampleFormControlSelect1">
-          <option>False</option>
-          <option>True</option>
+          <option>false</option>
+          <option>true</option>
         </select>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>

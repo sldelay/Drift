@@ -55,6 +55,12 @@ let postArr = [
 let userArr = [
   { name: "Bob Williams", email: "bob@gmail.com", admin: true, compId: 2 },
   {
+    name: "Joe Smith",
+    email: "awoodenheart114@gmail.com",
+    admin: false,
+    compId: 2,
+  },
+  {
     name: "Sam Delay",
     email: "samuel.delay@gmail.com",
     admin: true,
@@ -67,7 +73,20 @@ let userArr = [
     compId: 1,
   },
   { name: "Mike", email: "mike@gmail.com", admin: false, compId: 2 },
-  { name: "Bobby", email: "bobby@gmail.com", admin: true, compId: 1 },
+  { name: "Bobby", email: "bobby@gmail.com", admin: false, compId: 1 },
+  { name: "Tania Moore", email: "tania99@gmail.com", admin: true, compId: 1 },
+  {
+    name: "Walter Hoerman",
+    email: "whoerman@gmail.com",
+    admin: true,
+    compId: 1,
+  },
+  {
+    name: "Brian Lipsett",
+    email: "lipsettbrian3@gmail.com",
+    admin: true,
+    compId: 1,
+  },
 ];
 
 let answerArr = [
