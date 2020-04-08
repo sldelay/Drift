@@ -6,7 +6,7 @@
       <br>
       <a href="/findUserPost" type="button" class="btn btn-primary feedback" data-id="{{id}}">My Feedback</a>
       <br>
-      <a href="/api/getQuestions" type="button" class="btn btn-primary questions" data-id="{{id}}">Questions</a>
+      <a href="/getQuestions" type="button" class="btn btn-primary questions" data-id="{{id}}">Questions</a>
       {{else}}
       <a href="/findUser" type="button" class="btn btn-primary profile" data-id="{{id}}">My Profile</a>
       <br>
@@ -14,7 +14,7 @@
       <br>
       <a href="/api/getAnswers" type="button" class="btn btn-primary getAnswers">Employee Answers</a>
       {{/unless}}
-    </div>
+    </div>`
     <div class="col-sm-8 display">
       <h1>Hey there {{name}}!</h1>
       <h6>Email: {{email}}</h6>

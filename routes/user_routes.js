@@ -46,6 +46,13 @@ router.get("/api/answers/:user", function (req, res) {
   });
 });
 
+router.post("/api/answers", secured(), function (req, res) {
+  let allAnswers = req.body.answers;
+  db.Answer.bulkCreate(allAnswers).then(function (data) {
+    res.json(data)
+  });
+});
+
 router.post("/api/answers/:user", function (req, res) {
   db.Answer.create({
     answer: req.body.answer,
@@ -54,15 +61,24 @@ router.post("/api/answers/:user", function (req, res) {
   });
 });
 
-router.get("/api/getQuestions", function (req, res) {
+router.get("/getQuestions", secured(), async function (req, res, next) {
+
+  const user = await db.User.findOne({
+    where: {
+      email: req.user.emails[0].value
+    },
+    raw: true,
+  });
   db.Question.findAll({
     raw: true,
   }).then(function (question) {
     res.render("question", {
       question,
+      user
     });
   });
 });
+
 
 router.get('/findUserPost', secured(), function (req, res, next) {
   const { _raw, _json, ...userProfile } = req.user;

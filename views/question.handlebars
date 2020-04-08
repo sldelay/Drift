@@ -11,19 +11,25 @@
       <h1>Questions</h1>
       {{!-- question dynamic content --}}
       {{#each question}}
-      <p>{{question}}</p>
-      <div class="btn-group btn-group-toggle" data-toggle="buttons">
-        <label class="btn btn-secondary active">
-          <input type="radio" name="options" id="option1" checked> Active
-        </label>
-        <label class="btn btn-secondary">
-          <input type="radio" name="options" id="option2"> Radio
-        </label>
-        <label class="btn btn-secondary">
-          <input type="radio" name="options" id="option3"> Radio
-        </label>
+      <div class="row">
+        <div class="col">
+          <p>{{question}}</p>
+        </div>
+        <div class="col">
+          <select id="q_{{id}}" class="form-control given-answers">
+            <option>Extremely satisfied</option>
+            <option>Satisfied</option>
+            <option>Neutral</option>
+            <option>Dissatisfied</option>
+            <option>Extremely dissatisfied</option>
+          </select>
+        </div>
       </div>
       {{/each}}
+      <div>
+        <button class="pull-right btn btn-success" id="submitAnswers">Submit</button>
+      </div>
+
     </div>
   </div>
 </div>
@@ -46,3 +52,27 @@
     </form>
   </div>
 </div>
+<script>
+  document.getElementById('submitAnswers').addEventListener('click', submitAnswers)
+  function submitAnswers(){
+    let userId = {{ user.id }};
+  let postObj = { answers: [] };
+  let currentQuestion;
+  $(".given-answers").each(function () {
+    // read id
+    currentQuestion = $(this);
+    postObj.answers.push({
+      QuestionId: currentQuestion.attr('id').substring(2),
+      UserId: userId,
+      value: currentQuestion.val(),
+    });
+  });
+  $.ajax({
+    type: 'post',
+    url: '/api/answers',
+    data: postObj
+  }).done(function () {
+    console.log('thank you!');
+  });
+}
+</script>
