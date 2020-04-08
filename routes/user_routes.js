@@ -22,8 +22,15 @@ router.get("/api/myposts/:id", function (req, res) {
 });
 
 router.post("/api/newMessage", function (req, res) {
-  db.User.create(req.body).then(function (post) {
-    res.json(post);
+  db.Post.create({
+    where: {
+      subject: req.body.subject,
+      category: req.body.category,
+      content: req.body.content,
+      private: false,
+    },
+  }).then(function (data) {
+    res.json(data);
   });
 });
 
