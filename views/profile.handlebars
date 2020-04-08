@@ -27,7 +27,7 @@
   </div>
 </div>
 <div class="container user">
-  {{#unless profile.admin}}
+  {{#unless admin}}
   <div>
     <form class="newMessage" data-id="{{profile.id}}">
       <div class="form-group">
@@ -47,8 +47,15 @@
   </div>
   {{else}}
   <div>
-    <form class="newQuestion">
+    <form class="newQuestion" id="newQuestion">
       <div class="form-group">
+        <label for="formCategory">Category</label>
+        <select class="form-control" name="category" id="formCategory">
+          <option value="management">management</option>
+          <option value="hours">hours</option>
+          <option value="coworkers">coworkers</option>
+        </select>
+      </div>
         <label for="formQuestion">Question</label>
         <textarea class="form-control" id="formQuestion" rows="3"></textarea>
       </div>
@@ -76,3 +83,23 @@
 </div>
 {{/unless}}
 </div>
+<script>
+  $("#newQuestion").submit(function (event) {
+
+    event.preventDefault();
+    $.ajax({
+      url: "/api/newQuestion",
+      type: "post",
+      data: {
+        question: $("#formQuestion").val(),
+        category: $("#formCategory").val()
+      }
+    }).done(function (response) {
+      // clear form
+      $("#formQuestion").val("");
+      $("#formCategory").val("");
+      // attach to list
+      alert("submitted");
+    });
+  });
+</script>
