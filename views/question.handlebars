@@ -1,0 +1,48 @@
+<div class="container user">
+  <div class="row">
+     <div class="col-sm-4 sideNav">
+      <a href="/findUser" type="button" class="btn btn-primary profile" data-id="{{id}}">My Profile</a>
+      <br>
+      <a href="/findUserPost" type="button" class="btn btn-primary feedback" data-id="{{id}}">My Feedback</a>
+      <br>
+      <a href="/api/getQuestions" type="button" class="btn btn-primary questions" data-id="{{id}}">Questions</a>
+    </div>
+    <div class="col-sm-8 display">
+      <h1>Questions</h1>
+      {{!-- question dynamic content --}}
+      {{#each question}}
+      <p>{{question}}</p>
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-secondary active">
+          <input type="radio" name="options" id="option1" checked> Active
+        </label>
+        <label class="btn btn-secondary">
+          <input type="radio" name="options" id="option2"> Radio
+        </label>
+        <label class="btn btn-secondary">
+          <input type="radio" name="options" id="option3"> Radio
+        </label>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</div>
+<div class="container user">
+  <div>
+    <form class="newMessage" data-id="{{questions.id}}">
+      <div class="form-group">
+        <label for="formSubject">Subject</label>
+        <input type="email" class="form-control" id="formSubject" aria-describedby="emailHelp">
+      </div>
+      <div class="form-group">
+        <label for="formCategory">Category</label>
+        <input type="password" class="form-control" id="formCategory">
+      </div>
+      <div class="form-group">
+        <label for="formMessage">Message</label>
+        <textarea class="form-control" id="formMessage" rows="3"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="container user">
+  <div class="row">
+    <div class="col-sm-4 sideNav">
+      <a href="/findUser" type="button" class="btn btn-primary profile" data-id="{{profile.id}}">My Profile</a>
+      <br>
+      <a href="/api/posts" type="button" class="btn btn-primary getFeedback">Employee Feedback</a>
+      <br>
+      <a href="/api/getAnswers" type="button" class="btn btn-primary getAnswers">Employee Answers</a>
+    </div>
+    <div class="col-sm-8 display">
+      <h1>Post</h1>
+      <br>
+      {{#each post}}
+      <h4>Name: {{'User.name'}}</h4>
+      <h6>Subject: {{subject}}</h6>
+      <p>{{content}}</p>
+      <br>
+      {{/each}}
+    </div>
+  </div>
+</div>
+<div class="container user">
+  <div>
+    <form class="newQuestion">
+      <div class="form-group">
+        <label for="formQuestion">Question</label>
+        <textarea class="form-control" id="formQuestion" rows="3"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  <form>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Name</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Email</label>
+      <input type="password" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Admin Access</label>
+      <select class="form-control" id="exampleFormControlSelect1">
+        <option>False</option>
+        <option>True</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
