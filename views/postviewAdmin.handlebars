@@ -13,9 +13,10 @@
       <h1>Post</h1>
       <br>
       {{#each post}}
-      <h4>Name: {{'User.name'}}</h4>
+      <i class="fas fa-archive archive" data-id="{{id}}"></i><span class="h4">Name: {{'User.name'}}</span>
       <h6>Subject: {{subject}}</h6>
       <p>{{content}}</p>
+      <p><small>{{createdAt}}</small></p>
       <br>
       {{/each}}
     </div>
@@ -28,9 +29,9 @@
       <div class="form-group">
         <label for="formCategory">Category</label>
         <select class="form-control" name="category" id="formCategory">
-          <option value="management">management</option>
-          <option value="hours">hours</option>
-          <option value="coworkers">coworkers</option>
+          <option value="management">Management</option>
+          <option value="hours">Hours</option>
+          <option value="coworkers">Coworkers</option>
         </select>
       </div>
       <div class="form-group">

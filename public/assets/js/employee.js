@@ -1,5 +1,3 @@
-// JQuery for employee page goes here
-//event listener on button .feedback w/ get request rout on 29 un user routes and evet listener on btn .questions makes get to 49 in user;
 $(document).ready(function () {
   $(document).on("submit", "#newMessage", function (event) {
     event.preventDefault();
@@ -9,10 +7,26 @@ $(document).ready(function () {
       content: $("#formMessage").val().trim(),
       userId: $("#newMessage").attr("data-id"),
     };
+    console.log(postData);
     $.ajax({
       method: "POST",
       url: "/api/newMessage",
       data: postData,
+    }).then(function () {
+      location.reload();
+    });
+  });
+
+  $(document).on("submit", "#submitAnswer", function (event) {
+    event.preventDefault();
+    const formArray = $(event.currentTarget).serializeArray();
+    let arrObj = {
+      data: formArray,
+    };
+    $.ajax({
+      method: "POST",
+      url: "/api/answers",
+      data: arrObj,
     }).then(function () {
       location.reload();
     });

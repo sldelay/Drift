@@ -25,22 +25,16 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   User.associate = function (models) {
+    User.hasMany(models.Answer, {
+      onDelete: "RESTRICT",
+    });
+    User.hasMany(models.Post, {
+      onDelete: "RESTRICT",
+    });
     User.belongsTo(models.Company, {
       foreignKey: {
         allowNull: false,
       },
-    });
-  };
-
-  User.associate = function (models) {
-    User.hasMany(models.Post, {
-      onDelete: "RESTRICT",
-    });
-  };
-
-  User.associate = function (models) {
-    User.hasMany(models.Answer, {
-      onDelete: "RESTRICT",
     });
   };
   return User;

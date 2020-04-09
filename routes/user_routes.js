@@ -4,23 +4,7 @@ const secured = require('../lib/middleware/secured');
 
 let db = require("../models");
 
-// Route for getting all personal posts
-
-router.get("/api/myposts/:id", function (req, res) {
-  console.log(req.params.id);
-  db.Post.findOne({
-    where: {
-      UserId: req.params.id,
-    },
-    raw: true,
-  }).then(function (post) {
-    console.log(post)
-    res.render("postviewEmp", {
-      post,
-    });
-  });
-});
-
+// creates a new employee post
 router.post("/api/newMessage", function (req, res) {
   db.Post.create({
     subject: req.body.subject,
@@ -33,29 +17,62 @@ router.post("/api/newMessage", function (req, res) {
   });
 });
 
-router.get("/api/answers/:user", function (req, res) {
-  db.Drift_DB.findAll({
+///// >>>> FUTURE DEV
+// router.get("/api/answers/:user", function (req, res) {
+//   db.Drift_DB.findAll({
+//     where: {
+//       id: req.params.id,
+//     },
+//   }).then(function (post) {
+//     res.render("user", {
+//       post,
+//     });
+//   });
+// });
+
+// logs all employee answers in the answer model
+router.post("/api/answers", secured(), function (req, res) {
+  const { _raw, _json, ...userProfile } = req.user;
+  console.log(req.user._json.email);
+  db.User.findOne({
     where: {
-      id: req.params.id,
+      email: req.user._json.email,
     },
-  }).then(function (post) {
-    res.render("user", {
-      post,
-    });
+    raw: true,
+  }).then(function (user) {
+    let answerArr = req.body.data;
+    let id = user.id;
+    const seedAnswers = function (data) {
+      return db.Answer.create({
+        value: data.value,
+        QuestionId: data.name,
+        UserId: id,
+      });
+    }
+    const insertAnswers = function () {
+      return new Promise((res, rej) => {
+        let promArr = [];
+        for (const ele of answerArr) {
+          promArr.push(seedAnswers(ele));
+        }
+        Promise.all(promArr).then(res).catch(rej);
+      });
+    };
+    insertAnswers().then( function (data) {
+      res.json(data);
+    })
   });
 });
 
-router.post("/api/answers/:user", function (req, res) {
-  db.Answer.create({
-    answer: req.body.answer,
-  }).then(function (data) {
-    res.json(data);
-  });
-});
 
+// renders all questions to the employee page
 router.get("/api/getQuestions", function (req, res) {
   db.Question.findAll({
+    where: {
+      isActive: true,
+    },
     raw: true,
+    order: [["updatedAt", "DESC"]],
   }).then(function (question) {
     res.render("question", {
       question,
@@ -63,6 +80,7 @@ router.get("/api/getQuestions", function (req, res) {
   });
 });
 
+// renders all of the employees past post to their page
 router.get('/findUserPost', secured(), function (req, res, next) {
   const { _raw, _json, ...userProfile } = req.user;
   console.log(req.user._json.email);
@@ -75,12 +93,14 @@ router.get('/findUserPost', secured(), function (req, res, next) {
     let id = profile.id
     db.Post.findAll({
       where: {
-        UserId: id
+        UserId: id,
+        archived: false,
       },
       include: {
         model: db.User,
       },
       raw: true,
+      order: [["updatedAt", "DESC"]],
     }).then(function (post) {
       console.log(post)
       res.render("postviewEmp", { post })

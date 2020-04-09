@@ -13,6 +13,11 @@ body {
   margin-top: 1.5em;
 }
 
+.container {
+  margin-top: 1.5em;
+  margin-bottom: 4em;
+}
+
 .sideNav {
   min-height: 40em;
 }
@@ -23,4 +28,15 @@ body {
 
 a.btn {
   margin-bottom: 2em;
+}
+
+nav.navbar {
+  background-color: #7fafab !important;
+  min-height: 4em !important;
+}
+
+i {
+  margin-right: 1em;
+  color: blue;
+  cursor: pointer;
 }
