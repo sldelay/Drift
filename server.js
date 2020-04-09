@@ -9,7 +9,6 @@ const Auth0Strategy = require("passport-auth0");
 const flash = require("connect-flash");
 const userInViews = require("./lib/middleware/userInViews");
 const authRouter = require("./routes/auth");
-const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const adminRouter = require("./routes/admin_routes");
 const employeeRouter = require("./routes/user_routes");
@@ -115,7 +114,6 @@ app.use(function (req, res, next) {
 
 app.use(userInViews());
 app.use("/", authRouter);
-app.use("/", indexRouter);
 app.use("/", usersRouter);
 app.use("/", adminRouter);
 app.use("/", employeeRouter);
