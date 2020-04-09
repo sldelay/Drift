@@ -1,6 +1,12 @@
 $(document).ready(function () {
   $(document).on("submit", "#newMessage", function (event) {
     event.preventDefault();
+
+    if (!$("#formSubject").val() || !$("#formMessage").val()) {
+      alert("Looks like your forgot to input something!");
+      return;
+    }
+
     let postData = {
       subject: $("#formSubject").val().trim(),
       category: $("#formCategory").val(),
