@@ -1,72 +1,99 @@
-// "/api/posts" (gets all posts from db and renders /admin)
-// "/api/adminPosts/:user" (gets one employees posts from db and renders /admin)
-// "/api/posts/:category" (gets all category post from db and renders /admin)
-// "/api/newUser" (creates a new user and renders /admin)
-// "/api/newQuestion" (creates a new question and renders /admin)
-// "/api/getAnswers" (gets all answers from db and renders /admin)
-
 const db = require("../models");
 
 const express = require("express");
 const router = express.Router();
 
+// Renders all posts to the admin page
 router.get("/api/posts", function (req, res) {
   db.Post.findAll({
     raw: true,
+    where: {
+      archived: false,
+    },
     include: {
       model: db.User,
     },
+    order: [["updatedAt", "DESC"]],
   }).then(function (post) {
     res.render("postviewAdmin", { post });
   });
 });
 
-router.get("/api/adminPosts/:user", function (req, res) {
-  db.User.findOne({
-    where: {
-      name: req.params.user,
-    },
-    include: {
-      model: db.Post,
-    },
-  }).then(function (post) {
-    res.render("admin", {
-      post,
-    });
-  });
-});
+///// >>>> FUTURE DEV
+// router.get("/api/adminPosts/:user", function (req, res) {
+//   db.User.findOne({
+//     where: {
+//       name: req.params.user,
+//     },
+//     include: {
+//       model: db.Post,
+//     },
+//   }).then(function (post) {
+//     res.render("admin", {
+//       post,
+//     });
+//   });
+// });
 
-router.get("/api/posts/:category", function (req, res) {
-  db.Post.findAll({
-    where: {
-      category: req.params.category,
-    },
-  }).then(function (post) {
-    res.render("admin", {
-      post,
-    });
-  });
-});
+///// >>>> FUTURE DEV
+// router.get("/api/posts/:category", function (req, res) {
+//   db.Post.findAll({
+//     where: {
+//       category: req.params.category,
+//     },
+//   }).then(function (post) {
+//     res.render("admin", {
+//       post,
+//     });
+//   });
+// });
 
+// Renders all employee answers to the admin page
 router.get("/api/getAnswers", function (req, res) {
-  db.Answer.findAll({
+  db.Question.findAll({
+    where: {
+      isActive: true,
+    },
     include: [
       {
-        model: db.Question,
-        where: {
-          isActive: true,
-        },
+        model: db.Answer,
+        include: [db.User],
       },
     ],
     raw: true,
-  }).then(function (answer) {
-    console.log(answer);
+    order: [["updatedAt", "DESC"]],
+  }).then(function (question) {
+    let currentQuestId = 0;
+    let questIndex = -1;
+    const questArr = [];
+    question.forEach((ele) => {
+      let answerObj = {
+        value: ele["Answers.value"],
+        userName: ele["Answers.User.name"],
+      };
+      if (ele.id !== currentQuestId) {
+        let obj = {
+          id: ele.id,
+          category: ele.category,
+          question: ele.question,
+          answers: [answerObj],
+        };
+
+        questArr.push(obj);
+        currentQuestId = ele.id;
+        questIndex++;
+      } else {
+        questArr[questIndex].answers.push(answerObj);
+      }
+    });
+    console.log(questArr);
     res.render("answer", {
-      answer,
+      questArr,
     });
   });
 });
 
+// creates a new question
 router.post("/api/newQuestion", function (req, res) {
   db.Question.create({
     category: req.body.category,
@@ -76,6 +103,7 @@ router.post("/api/newQuestion", function (req, res) {
   });
 });
 
+// creates a new user
 router.post("/api/newUser", function (req, res) {
   db.User.create({
     name: req.body.name,
@@ -86,16 +114,39 @@ router.post("/api/newUser", function (req, res) {
   });
 });
 
-router.get("/api/admin/:id", function (req, res) {
-  db.Question.findAll({
+// Archive Post
+router.put("/api/archivePost/:id", function (req, res) {
+  db.Post.update(req.body, {
     where: {
       id: req.params.id,
     },
-  }).then(function (profile) {
-    res.render("admin", {
-      profile,
-    });
+  }).then(function (data) {
+    res.json(data);
   });
 });
+
+// makes a question inactive
+router.put("/api/inactiveQuestion/:id", function (req, res) {
+  db.Question.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+  }).then(function (data) {
+    res.json(data);
+  });
+});
+
+///// >>>> FUTURE DEV
+// router.get("/api/admin/:id", function (req, res) {
+//   db.Question.findAll({
+//     where: {
+//       id: req.params.id,
+//     },
+//   }).then(function (profile) {
+//     res.render("admin", {
+//       profile,
+//     });
+//   });
+// });
 
 module.exports = router;

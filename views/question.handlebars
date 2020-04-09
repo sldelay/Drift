@@ -1,78 +1,45 @@
 <div class="container user">
   <div class="row">
-     <div class="col-sm-4 sideNav">
+    <div class="col-sm-4 sideNav">
       <a href="/findUser" type="button" class="btn btn-primary profile" data-id="{{id}}">My Profile</a>
       <br>
       <a href="/findUserPost" type="button" class="btn btn-primary feedback" data-id="{{id}}">My Feedback</a>
       <br>
       <a href="/api/getQuestions" type="button" class="btn btn-primary questions" data-id="{{id}}">Questions</a>
+      <br>
+      <a href="/logout" type="button" class="btn btn-primary questions" data-id="{{id}}">Logout</a>
     </div>
     <div class="col-sm-8 display">
       <h1>Questions</h1>
       {{!-- question dynamic content --}}
-      {{#each question}}
-      <div class="row">
-        <div class="col">
-          <p>{{question}}</p>
+      <form id="submitAnswer">
+        {{#each question}}
+        <p data-id="{{id}}">{{question}}</p>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="{{id}}" id="inlineRadio1" value="1">
+          <label class="form-check-label" for="inlineRadio1">1</label>
         </div>
-        <div class="col">
-          <select id="q_{{id}}" class="form-control given-answers">
-            <option>Extremely satisfied</option>
-            <option>Satisfied</option>
-            <option>Neutral</option>
-            <option>Dissatisfied</option>
-            <option>Extremely dissatisfied</option>
-          </select>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="{{id}}" id="inlineRadio2" value="2">
+          <label class="form-check-label" for="inlineRadio2">2</label>
         </div>
-      </div>
-      {{/each}}
-      <div>
-        <button class="pull-right btn btn-success" id="submitAnswers">Submit</button>
-      </div>
-
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="{{id}}" id="inlineRadio3" value="3">
+          <label class="form-check-label" for="inlineRadio3">3</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="{{id}}" id="inlineRadio4" value="4">
+          <label class="form-check-label" for="inlineRadio4">4</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="{{id}}" id="inlineRadio5" value="5">
+          <label class="form-check-label" for="inlineRadio5">5</label>
+        </div>
+        <br>
+        {{/each}}
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
     </div>
   </div>
 </div>
-<div class="container user">
-  <div>
-    <form class="newMessage" data-id="{{questions.id}}">
-      <div class="form-group">
-        <label for="formSubject">Subject</label>
-        <input type="email" class="form-control" id="formSubject" aria-describedby="emailHelp">
-      </div>
-      <div class="form-group">
-        <label for="formCategory">Category</label>
-        <input type="password" class="form-control" id="formCategory">
-      </div>
-      <div class="form-group">
-        <label for="formMessage">Message</label>
-        <textarea class="form-control" id="formMessage" rows="3"></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-  </div>
-</div>
-<script>
-  document.getElementById('submitAnswers').addEventListener('click', submitAnswers)
-  function submitAnswers(){
-    let userId = {{ user.id }};
-  let postObj = { answers: [] };
-  let currentQuestion;
-  $(".given-answers").each(function () {
-    // read id
-    currentQuestion = $(this);
-    postObj.answers.push({
-      QuestionId: currentQuestion.attr('id').substring(2),
-      UserId: userId,
-      value: currentQuestion.val(),
-    });
-  });
-  $.ajax({
-    type: 'post',
-    url: '/api/answers',
-    data: postObj
-  }).done(function () {
-    console.log('thank you!');
-  });
-}
-</script>

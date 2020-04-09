@@ -6,13 +6,17 @@
       <br>
       <a href="/findUserPost" type="button" class="btn btn-primary feedback" data-id="{{id}}">My Feedback</a>
       <br>
-      <a href="/getQuestions" type="button" class="btn btn-primary questions" data-id="{{id}}">Questions</a>
+      <a href="/api/getQuestions" type="button" class="btn btn-primary questions" data-id="{{id}}">Questions</a>
+      <br>
+      <a href="/logout" type="button" class="btn btn-primary questions" data-id="{{id}}">Logout</a>
       {{else}}
       <a href="/findUser" type="button" class="btn btn-primary profile" data-id="{{id}}">My Profile</a>
       <br>
       <a href="/api/posts" type="button" class="btn btn-primary getFeedback">Employee Feedback</a>
       <br>
       <a href="/api/getAnswers" type="button" class="btn btn-primary getAnswers">Employee Answers</a>
+      <br>
+      <a href="/logout" type="button" class="btn btn-primary questions" data-id="{{id}}">Logout</a>
       {{/unless}}
     </div>`
     <div class="col-sm-8 display">
@@ -29,14 +33,20 @@
 <div class="container user">
   {{#unless admin}}
   <div>
-    <form class="newMessage" data-id="{{profile.id}}">
+    <h3>New Message</h3>
+    <form id="newMessage" data-id="{{id}}">
       <div class="form-group">
         <label for="formSubject">Subject</label>
-        <input type="email" class="form-control" id="formSubject" aria-describedby="emailHelp">
+        <input class="form-control" id="formSubject" aria-describedby="emailHelp">
       </div>
       <div class="form-group">
         <label for="formCategory">Category</label>
-        <input type="password" class="form-control" id="formCategory">
+        <select class="form-control" name="category" id="formCategory">
+          <option value="management">Management</option>
+          <option value="hours">Hours</option>
+          <option value="coworkers">Coworkers</option>
+          <option value="other">Other</option>
+        </select>
       </div>
       <div class="form-group">
         <label for="formMessage">Message</label>
@@ -47,59 +57,44 @@
   </div>
   {{else}}
   <div>
-    <form class="newQuestion" id="newQuestion">
+    <h3>Ask Your Team A Question</h3>
+    <form id="newQuestion">
       <div class="form-group">
         <label for="formCategory">Category</label>
         <select class="form-control" name="category" id="formCategory">
-          <option value="management">management</option>
-          <option value="hours">hours</option>
-          <option value="coworkers">coworkers</option>
+          <option value="management">Management</option>
+          <option value="hours">Hours</option>
+          <option value="coworkers">Coworkers</option>
         </select>
       </div>
+      <div class="form-group">
         <label for="formQuestion">Question</label>
         <textarea class="form-control" id="formQuestion" rows="3"></textarea>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>
-  <form class="newEmployee">
-    <div class="form-group">
-      <label for="exampleInputEmail1">Name</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Email</label>
-      <input type="password" class="form-control" id="exampleInputPassword1">
-    </div>
-    <div class="form-group">
-      <label for="exampleFormControlSelect1">Admin Access</label>
-      <select class="form-control" id="exampleFormControlSelect1">
-        <option>False</option>
-        <option>True</option>
-      </select>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+  <br>
+  <div>
+    <h3>Add A New Employee</h3>
+    <form id="newEmployee">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Name</label>
+        <input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Email</label>
+        <input class="form-control" id="exampleInputPassword1">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Admin Access</label>
+        <select class="form-control" id="exampleFormControlSelect1">
+          <option>false</option>
+          <option>true</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  {{/unless}}
 </div>
-{{/unless}}
-</div>
-<script>
-  $("#newQuestion").submit(function (event) {
-
-    event.preventDefault();
-    $.ajax({
-      url: "/api/newQuestion",
-      type: "post",
-      data: {
-        question: $("#formQuestion").val(),
-        category: $("#formCategory").val()
-      }
-    }).done(function (response) {
-      // clear form
-      $("#formQuestion").val("");
-      $("#formCategory").val("");
-      // attach to list
-      alert("submitted");
-    });
-  });
-</script>

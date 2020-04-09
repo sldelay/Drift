@@ -6,35 +6,18 @@
       <a href="/findUserPost" type="button" class="btn btn-primary feedback" data-id="{{id}}">My Feedback</a>
       <br>
       <a href="/api/getQuestions" type="button" class="btn btn-primary questions" data-id="{{id}}">Questions</a>
+      <br>
+      <a href="/logout" type="button" class="btn btn-primary questions" data-id="{{id}}">Logout</a>
     </div>
     <div class="col-sm-8 display">
       <h1>Post</h1>
       <br>
       {{#each post}}
-      <h4>Name: {{'User.name'}}</h4>
-      <h6>Subject: {{subject}}</h6>
+      <i class="fas fa-archive archive" data-id="{{id}}"></i><span class="h5">Subject: {{subject}}</span>
       <p>{{content}}</p>
+      <p><small>{{createdAt}}</small></p>
       <br>
       {{/each}}
     </div>
-  </div>
-</div>
-<div class="container user">
-  <div>
-    <form class="newMessage" data-id="{{profile.id}}">
-      <div class="form-group">
-        <label for="formSubject">Subject</label>
-        <input type="email" class="form-control" id="formSubject" aria-describedby="emailHelp">
-      </div>
-      <div class="form-group">
-        <label for="formCategory">Category</label>
-        <input type="password" class="form-control" id="formCategory">
-      </div>
-      <div class="form-group">
-        <label for="formMessage">Message</label>
-        <textarea class="form-control" id="formMessage" rows="3"></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
   </div>
 </div>
