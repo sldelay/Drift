@@ -76,6 +76,7 @@ router.get("/api/getQuestions", function (req, res) {
   }).then(function (question) {
     res.render("question", {
       question,
+      user
     });
   });
 });
