@@ -3,14 +3,16 @@ const db = require("../models");
 const express = require("express");
 const router = express.Router();
 
-router.get("/api/companies", function (req, res) {
-  db.Post.findAll({}).then(function (post) {
-    res.json("company", {
-      post,
-    });
-  });
-});
+///// >>>> FUTURE DEV
+// router.get("/api/companies", function (req, res) {
+//   db.Post.findAll({}).then(function (post) {
+//     res.json("company", {
+//       post,
+//     });
+//   });
+// });
 
+// creates a new company
 router.post("/api/newCompany", function (req, res) {
   db.Company.findOrCreate({
     where: {
