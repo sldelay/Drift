@@ -1,4 +1,3 @@
-// JQuery for admin page goes here
 $(document).ready(function () {
   $(document).on("submit", "#newEmployee", function (event) {
     event.preventDefault();
@@ -32,22 +31,38 @@ $(document).ready(function () {
       location.reload();
     });
   });
-});
 
-// $("#newQuestion").submit(function (event) {
-//   event.preventDefault();
-//   $.ajax({
-//     url: "/api/newQuestion",
-//     type: "post",
-//     data: {
-//       question: $("#formQuestion").val(),
-//       category: $("#formCategory").val(),
-//     },
-//   }).done(function (response) {
-//     // clear form
-//     $("#formQuestion").val("");
-//     $("#formCategory").val("");
-//     // attach to list
-//     alert("submitted");
-//   });
-// });
+  $(document).on("click", ".archive", function () {
+    console.log($(this).attr("data-id"));
+    let id = $(this).attr("data-id");
+
+    let archive = {
+      archived: true,
+    };
+
+    $.ajax({
+      method: "PUT",
+      url: `/api/archivePost/${id}`,
+      data: archive,
+    }).then(function () {
+      location.reload();
+    });
+  });
+
+  $(document).on("click", ".questActive", function () {
+    console.log($(this).attr("data-id"));
+    let id = $(this).attr("data-id");
+
+    let active = {
+      isActive: false,
+    };
+
+    $.ajax({
+      method: "PUT",
+      url: `/api/inactiveQuestion/${id}`,
+      data: active,
+    }).then(function () {
+      location.reload();
+    });
+  });
+});
