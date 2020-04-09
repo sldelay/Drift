@@ -40,3 +40,14 @@ i {
   color: blue;
   cursor: pointer;
 }
+
+@media screen and (max-width: 575px) {
+
+  .display {
+    min-height: 0em;
+  }
+
+  .sideNav {
+    min-height: 0em;
+  }
+}
