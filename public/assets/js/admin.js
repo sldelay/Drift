@@ -1,6 +1,12 @@
 $(document).ready(function () {
   $(document).on("submit", "#newEmployee", function (event) {
     event.preventDefault();
+
+    if (!$("#exampleInputEmail1").val() || !$("#exampleInputPassword1").val()) {
+      alert("Looks like your forgot to input something!");
+      return;
+    }
+
     let postData = {
       name: $("#exampleInputEmail1").val().trim(),
       email: $("#exampleInputPassword1").val().trim(),
@@ -17,6 +23,12 @@ $(document).ready(function () {
 
   $(document).on("submit", "#newQuestion", function (event) {
     event.preventDefault();
+
+    if (!$("#formQuestion").val()) {
+      alert("Looks like your forgot to input something!");
+      return;
+    }
+
     let postData = {
       question: $("#formQuestion").val(),
       category: $("#formCategory").val(),

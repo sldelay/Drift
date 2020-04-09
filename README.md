@@ -3,7 +3,8 @@
 # Drift
 * Prevent Employee Turnover. Catch their drift!
 
-![alt text](./Drift%20Images/Landing.png)
+
+![alt text](public/assets/images/Landing.png)
 
 # Developers
 * Sam Delay - https://github.com/sldelay
