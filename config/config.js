@@ -10,7 +10,7 @@ module.exports = {
     dialect: "mysql",
   },
   production: {
-    use_env_variable: JAWS,
+    use_env_variable: process.env.JAWS,
     dialect: "mysql",
   },
 };
