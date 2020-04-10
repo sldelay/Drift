@@ -6,15 +6,15 @@ router.get("/", function (req, res) {
 });
 
 router.get("/instructions", function (req, res) {
-  res.render("instructions", {});
+  res.render("instructions");
 });
 
 router.get("/about", function (req, res) {
-  res.render("about", {});
+  res.render("about");
 });
 
 router.get("/contact", function (req, res) {
-  res.render("contact", {});
+  res.render("contact");
 });
 
 module.exports = router;
