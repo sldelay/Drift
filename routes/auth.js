@@ -59,7 +59,7 @@ router.get("/logout", (req, res) => {
   });
   logoutURL.search = searchString;
 
-  res.redirect(logoutURL);
+  res.redirect("/");
 });
 
 module.exports = router;
