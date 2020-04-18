@@ -6,6 +6,8 @@
 
 ![alt text](public/assets/images/Landing.png)
 
+Link to the live website: (https://desolate-tor-70808.herokuapp.com/)
+
 # Developers
 * Sam Delay - https://github.com/sldelay
 * Walter Hoerman - https://github.com/whoerman
